@@ -148,6 +148,7 @@ install_nginx <- function(droplet){
 }
 
 install_new_r <- function(droplet){
+  message("Installing apt_conf_d")
   analogsea::droplet_upload(droplet, local=system.file("server", "apt.conf.d", package="plumberDeploy"),
                             remote = "/etc/apt")
   analogsea::droplet_ssh(droplet, "sudo echo 'DEBIAN_FRONTEND=noninteractive' >> /etc/environment")
